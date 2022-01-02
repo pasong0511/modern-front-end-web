@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+}
+
+.body {
+    margin: 0 auto;
+    color: #3f464d;
+    font-family: "Spoqa Han Sans Neo", "Sans-serif";
+}
+
+a {
+    all : unset;
+}
+
+a:link {                                /*가상 클래스는 프로퍼티 각각 설정 필요*/
+    text-decoration: none;
+    color: #3f464d;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #3f464d;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #3f464d;
+}
+
+.inner {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;                    /*양 옆에 여유좀 둠*/
+}
+
+header {
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+    position: fixed;                    /*스크롤 처리가 되지 않도록 항상 고정*/
+    top : 0;
+    left: 0;
+    z-index: 1000;                      /*항상 다른 요소 위에 있어야하므로 z-index 조정*/
+}
+
+.head-container {
+    width: 100%;
+    height: 100%;
+    display: flex;                      /*안에 있는 값을 정렬해야하기 때문에 flex*/
+    justify-content: space-between;     /*양옆으로 넓게 수평 조정*/
+    align-items: center;
+}
+
+.head-container .head-brand {
+    font-weight: bold;
+    font-size: 1.2rem;                  /*em쓰면 부모 요소에 영향을 받을 수 있음, 브라우저에 설정된 rem 사용*/
+}
+
+.head-container .head-brand a:hover{    /*로고에 마우스 가져다 대었을때 색 변경*/
+    color: #2186C4;
+    cursor: pointer;
+}
+
+.head-container .head-blog {
+    font-weight: bold;
+    font-size: 1.2rem;                  /*em쓰면 부모 요소에 영향을 받을 수 있음, 브라우저에 설정된 rem 사용*/
+}
+
+/*section 영역*/
+section { 
+    width: 100%;
+    background-color: #ffffff;
+    position: relative;                 /*absoluete는 position: relative에 영향 받는다*/
+}
+
+.main {
+    height: 360px;
+    background-image: url("/img/main_bakground.PNG");
+    background-size: cover;
+    background-position: center 5%;
+    background-repeat: no-repeat;       /*사진 반복 보여주기 제거*/
+    z-index: 1;
+    
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(47, 48, 89);
+    opacity: 0.8;                       /*투명도 조절*/
+    z-index: 2;                         /*main의 이미지를 덮어야 하기 때문에 z-index 우선 순위 향상*/
+    margin-top: 60px;
+}
+
+.title-container {
+    padding: 100px;
+    padding-bottom: 100px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+}
+
+.message {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #ffffff;
+    line-height: 2rem;
+}
+
+/*section2 영역*/
+.skill-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+@media only screen and (min-width: 1200px) {
+    .inner {
+        max-width: 1200px;              /*브라우저 사이즈가 최대 1200px 고정*/
+    }
+}
