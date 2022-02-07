@@ -196,16 +196,26 @@ section {
     color: #545e6f;
 }
 
-.slice-prev {
+.slide-prev {
     font-size: 2rem;
     cursor: pointer;
     color: rgb(47, 48, 89);
 }
 
-.slice-next {
+.slide-next {
     font-size: 2rem;
     cursor: pointer;
     color: #cfd8dc;
+}
+
+.slide-prev-hover:hover {
+    transition: transform 0.5s;
+    transform: translateX(-2px);
+}
+
+.slide-next-hover:hover {
+    transition: transform 0.5s;
+    transform: translateX(2px);
 }
 
 .arrow-container {
@@ -217,7 +227,7 @@ section {
     list-style: none;   /**/
     padding: 1rem 0;         /*li요소를 list-style을 none으로 해도 마진, 패딩은 추가 설정 필요*/
     margin: 0;
-    overflow: hidden;
+    overflow: none;         /*사이즈 넘쳤을때 보여줌 overflow를 hidden으로 설정하면 transform 시 이미지 짤림*/
 }
 
 .class-card {
@@ -265,11 +275,17 @@ section {
 .class-desc {
     width: 100%;
     margin-top: 1rem;
+    color: #545e6f;
+}
+
+.class-desc:hover {
+    color: #2186C4;
 }
 
 .class-title {
     font-weight: bold;
-    color: #545e6f;
+    /* color: #545e6f; */
+    color: inherit;                     /*자식 클래스가 부모클래스의 color 속성 상속 받음*/
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -279,7 +295,8 @@ section {
 
 .class-detail {
     font-size: 0.9rem;
-    color: #545e6f;
+    color: inherit;                     /*자식 클래스가 부모클래스의 color 속성 상속 받음*/
+    /* color: #545e6f; */
     line-height: 1.5rem;
 }
 
@@ -312,6 +329,59 @@ footer {
 .footer-copyright {
     color: #545e6f;
     margin: 1rem 0.5rem;
+}
+
+#backtotop {
+    background-color: rgb(47, 48, 89);
+    width: 40px;
+    height: 40px;
+    text-align: center;
+
+    border-radius: 20px;                /*width와 height의 반절로 만들어서 모서리를 둥글게 만든다*/
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition-property : background-color, opacity, visibility;        /*트랜지션을 적용해야 하는 CSS 속성 목록*/
+    transition-duration: 0.3s, 0.5s, 0.5s;      /*각 프로퍼티당 시간을 각각 줄수있다.*/
+
+    opacity: 0;                                 /*투명도 0*/
+    visibility: hidden;                         /*처음에는 가림*/
+    z-index: 999;                               /*보이게 되면 우선순위 높음(맨앞으로 보임)*/
+}
+
+/*아이콘 적용 방법
+    1. ::after (요소 뒤에 content 추가) 가상 요소에서
+    2. content : 폰트어썸 유니코드를 넣고,
+    3. font-family : fontAwsome 이라고 넣으면 됨
+    */
+/*after : 요소 뒤에 위치하는 공간 선택, content 프로퍼티와 함께 사용*/
+#backtotop::after {
+    content: "\f077";           /*폰트어썸 유니코드 추가*/
+    font-family: FontAwesome;
+    font-size : 1.5rem;
+    line-height: 40px;
+    color: #ffffff;
+}
+
+#backtotop.show {                   /*스크롤 움직이면 BackTop 버튼 보여짐*/
+    opacity: 1;
+    visibility: visible;
+    background-color: rgb(47, 48, 49);
+}
+
+#backtotop.show:hover {
+    cursor: pointer;
+    background-color: #2186C4;
+}
+
+/* drag 할 수 있는 아이템임을 나타내는 표시를 포인터로 변경함 */
+ul li img:hover {
+    cursor: grab; /* IE11에서는 지원 안함 */
+}
+
+/* dragging 중인 상태에서 잡는 표시를 포인터로 변경함 */
+ul li img:active {
+    cursor: grabbing; /* IE11에서는 지원 안함 */
 }
 
 
